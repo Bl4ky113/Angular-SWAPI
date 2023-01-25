@@ -6,13 +6,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  indexPlanets: number = 62;
-  indexResidents: number = 0;
-  indexVehicles: number = 0;
+  indexArray: Array<number> = [
+    0, // Planets
+    0, // Residents
+    0, // Vehicles
+  ];
+
+  maxIndexArray: Array<number> = [
+    0, // Planets
+    0, // Residents
+    0  // Vehicles
+  ];
+
+
+  setMaxIndex(maxIndex: number, maxIndexIndex: number) {
+    this.maxIndexArray[maxIndexIndex] = maxIndex;
+  }
 
   changeCurrentIndex (indexVariable: number, change: number) {
-    if (change > 0 && indexVariable === 0) { return }
+    if (
+      change > 0 &&
+      this.indexArray[indexVariable] >= (this.maxIndexArray[indexVariable] - 1)
+    ) { return; }
+    else if (
+      change < 0 &&
+      this.indexArray[indexVariable] <= 0
+    ) { return; }
 
-
+    this.indexArray[indexVariable] += change;
   }
 }

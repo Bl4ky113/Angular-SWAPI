@@ -15,11 +15,18 @@
   <section class="section-wrapper">
     <div class="section-slideshow">
       <button class="section-slideshow__btn section-slideshow__btn--left"
-        (click)="changeCurrentIndex(indexPlanets, -1)">
+        (click)="changeCurrentIndex(0, -1)"
+        >
         &#10094;
       </button>
-      <planets [currentIndex]="indexPlanets"></planets>
-      <button class="section-slideshow__btn section-slideshow__btn--right">
+      <planets
+        [currentIndex]="indexArray[0]"
+        (sendMaxIndexEvent)="setMaxIndex($event, 0)"
+        >
+      </planets>
+      <button class="section-slideshow__btn section-slideshow__btn--right"
+        (click)="changeCurrentIndex(0, 1)"
+        >
         &#10095;
       </button>
     </div>

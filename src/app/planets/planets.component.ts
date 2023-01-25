@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { SwapiService } from '../services/swapi.service';
 
@@ -9,6 +9,7 @@ import { SwapiService } from '../services/swapi.service';
 })
 export class PlanetsComponent implements OnInit {
   @Input() currentIndex: number = 0;
+  @Output() sendMaxIndexEvent: EventEmitter<number> = new EventEmitter();
 
   constructor (private swapi: SwapiService) {  }
 
@@ -25,6 +26,8 @@ export class PlanetsComponent implements OnInit {
         this.planet_list.push(...json.results);
 
         if (json.next === null) {
+          this.sendMaxIndexEvent.emit(this.planet_list.length)
+
           return null;
         }
 
