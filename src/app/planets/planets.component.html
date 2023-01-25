@@ -1,1 +1,45 @@
-<p>planets works!</p>
+<div class="planet-info"
+  *ngFor="
+    let planet of planet_list;
+    let i=index;
+    let f=first;
+    "
+  [class.planet-info--visible]="checkIfPlanetIsVisible(i)"
+  #planet_(i)
+  >
+  <p class="planet-info__name">{{ planet.name }}</p>
+  <ul class="info-list">
+    <li class="info">
+      <span class="info__title">Climate:</span>
+      <span class="info__data">{{ planet.climate }}</span>
+    </li>
+    <li class="info">
+      <span class="info__title">Diameter:</span>
+      <span class="info__data">{{ planet.diameter }}</span>
+    </li>
+    <li class="info">
+      <span class="info__title">Gravity:</span>
+      <span class="info__data">{{ planet.gravity }}</span>
+    </li>
+    <li class="info">
+      <span class="info__title">Orbital Period:</span>
+      <span class="info__data">{{ planet.orbital_period }}</span>
+    </li>
+    <li class="info">
+      <span class="info__title">Population:</span>
+      <span class="info__data">{{ planet.population }}</span>
+    </li>
+    <li class="info">
+      <span class="info__title">Rotation Period:</span>
+      <span class="info__data">{{ planet.rotation_period }}</span>
+    </li>
+    <li class="info">
+      <span class="info__title">Surface Water:</span>
+      <span class="info__data">{{ planet.surface_water }}</span>
+    </li>
+    <li class="info">
+      <span class="info__title">Terrain:</span>
+      <span class="info__data">{{ planet.terrain }}</span>
+    </li>
+  </ul>
+</div>

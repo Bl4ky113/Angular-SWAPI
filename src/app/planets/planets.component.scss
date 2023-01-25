@@ -1,0 +1,62 @@
+$sw_yellow: var(--sw_yellow);
+$sw_black: var(--sw_black);
+
+$font_white: var(--font_white);
+$font_yellow: var(--font_yellow);
+$font_black: var(--font_black);
+
+$bg_white: var(--bg_white);
+$bg_grey: var(--bg_grey);
+$bg_black: var(--bg_black);
+
+.planet-info {
+  border: 2px solid $sw_yellow;
+  padding: 1rem;
+
+  display: none;
+
+  .planet-info__name {
+    border-bottom: 1px solid $sw_yellow;
+
+    color: $sw_yellow;
+    font: 800 1.5em/100% "Bebas Neue", sans-serif;
+  }
+
+  .info-list {
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
+
+    list-style: none;
+
+    .info {
+      display: flex;
+      align-items: baseline;
+      justify-content: stretch;
+
+      &:before {
+        content: "›";
+
+        margin: 0 1rem;
+
+        color: $sw_yellow;
+        font: 800 1.5rem/100% 'Roboto', sans-serif;
+      }
+
+      .info__title {
+        color: $sw_yellow;
+        font: 400 1rem/100% 'Roboto Condensed', sans-serif;
+      }
+
+      .info__data {
+        margin: 0 0.5rem;
+
+        color: $font_white;
+        font: 400 1rem/100% 'Roboto', sans-serif;
+      }
+    }
+  }
+}
+
+
+
+.planet-info--visible { display: block; }

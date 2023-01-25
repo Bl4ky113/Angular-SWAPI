@@ -78,6 +78,43 @@ $bg_black: var(--bg_black);
       text-decoration: none;
     }
   }
+
+  .section-wrapper {
+    padding: 1.5rem 0.25rem;
+
+    background-color: $sw_black;
+
+    .section-slideshow {
+      display: grid;
+      grid-template: 1fr / auto 1fr auto;
+      grid-template-areas: "left_btn slidershow right_btn";
+
+      justify-items: stretch;
+      align-items: stretch;
+      justify-content: center;
+      align-content: center;
+
+      .section-slideshow__btn {
+        min-height: 20vh;
+
+        border: none;
+        border-radius: 0.25rem;
+        padding: 0.5rem;
+
+        background-color: $sw_yellow;
+
+        &:active,
+        &:hover {
+          outline: none;
+          background-color: $font_yellow;
+        }
+      }
+
+      planets, residents, vehicles { grid-area: slidershow; margin: 0.5rem; }
+      .section-slideshow__btn--left { grid-area: left_btn; }
+      .section-slideshow__btn--right { grid-area: right_btn; }
+    }
+  }
 }
 
 .footer {
