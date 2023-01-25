@@ -10,23 +10,26 @@ import { SwapiService } from '../services/swapi.service';
 export class PlanetsComponent implements OnInit {
   @Input() currentIndex: number = 0;
   @Output() sendMaxIndexEvent: EventEmitter<number> = new EventEmitter();
+  @Output() sendResidentUrls: EventEmitter<Array<string>> = new EventEmitter();
 
   constructor (private swapi: SwapiService) {  }
 
-  planet_list: Array<any> = []; // Had Multiple Problems With
+  planetList: Array<any> = []; // Had Multiple Problems With
+  isPlanetListComplete: boolean = false;
 
   ngOnInit () {
     this.addPlanetList(1);
-    console.log(this.planet_list)
+    console.log(this.planetList)
   }
 
   addPlanetList (pageNumber: number) { // Nice Implementation
     this.swapi.getPlanetList(pageNumber).subscribe(
       (json: any) => {
-        this.planet_list.push(...json.results);
+        this.planetList.push(...json.results);
 
         if (json.next === null) {
-          this.sendMaxIndexEvent.emit(this.planet_list.length)
+          this.sendMaxIndexEvent.emit(this.planetList.length)
+          this.isPlanetListComplete = true;
 
           return null;
         }
@@ -37,7 +40,13 @@ export class PlanetsComponent implements OnInit {
   }
 
   checkIfPlanetIsVisible (planetIndex: number) {
+    if ( this.isPlanetListComplete !== true ) { return false; }
+
     if (this.currentIndex !== planetIndex) { return false; }
+
+    this.sendResidentUrls.emit(
+      this.planetList[planetIndex].residents
+    );
 
     return true;
   }

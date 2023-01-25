@@ -21,6 +21,7 @@
       </button>
       <planets
         [currentIndex]="indexArray[0]"
+        (sendResidentUrls)="setResidentUrls($event)"
         (sendMaxIndexEvent)="setMaxIndex($event, 0)"
         >
       </planets>
@@ -33,14 +34,34 @@
   </section>
   <section class="section-wrapper">
     <div class="section-slideshow">
-      <button class="section-slideshow__btn section-slideshow__btn--left">&#10094;</button>
-      <button class="section-slideshow__btn section-slideshow__btn--right">&#10095;</button>
+      <button class="section-slideshow__btn section-slideshow__btn--left"
+        (click)="changeCurrentIndex(1, -1)"
+        >
+        &#10094;
+      </button>
+      <residents
+        [requestUrls]="residentUrls"
+        >
+      </residents>
+      <button class="section-slideshow__btn section-slideshow__btn--right"
+        (click)="changeCurrentIndex(1, -1)"
+        >
+        &#10095;
+      </button>
     </div>
   </section>
   <section class="section-wrapper">
     <div class="section-slideshow">
-      <button class="section-slideshow__btn section-slideshow__btn--left">&#10094;</button>
-      <button class="section-slideshow__btn section-slideshow__btn--right">&#10095;</button>
+      <button class="section-slideshow__btn section-slideshow__btn--left"
+        (click)="changeCurrentIndex(2, -1)"
+        >
+        &#10094;
+      </button>
+      <button class="section-slideshow__btn section-slideshow__btn--right"
+        (click)="changeCurrentIndex(2, -1)"
+        >
+        &#10095;
+      </button>
     </div>
   </section>
 </main>

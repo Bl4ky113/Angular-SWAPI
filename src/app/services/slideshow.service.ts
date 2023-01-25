@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class AppComponent {
+export class SlideshowService {
+
+  constructor () {  }
+
   indexArray: Array<number> = [
     0, // Planets
     0, // Residents
@@ -18,17 +19,13 @@ export class AppComponent {
     0  // Vehicles
   ];
 
-  residentUrls: Array<string> = [""];
 
   setMaxIndex(maxIndex: number, maxIndexIndex: number) {
     this.maxIndexArray[maxIndexIndex] = maxIndex;
   }
 
-  setResidentUrls (urlsArray: Array<string>) {
-    this.residentUrls = urlsArray;
-  }
-
-  changeCurrentIndex (indexVariable: number, change: number) {
+  changeCurrentIndex (indexVariable: number, change: number) { // Simple Implementation
+    console.log(indexVariable, change);
     if (
       change > 0 &&
       this.indexArray[indexVariable] >= (this.maxIndexArray[indexVariable] - 1)
@@ -39,5 +36,6 @@ export class AppComponent {
     ) { return; }
 
     this.indexArray[indexVariable] += change;
+    console.log(this.indexArray[indexVariable]);
   }
 }

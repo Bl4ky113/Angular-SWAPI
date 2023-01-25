@@ -14,4 +14,8 @@ export class SwapiService {
   getPlanetList (pageNumber=1): Observable<object> {
     return this.http.get(this.API_URL + 'planets/?page=' + pageNumber);
   }
+
+  getPersonFromUrl (url: string): Observable<object> {
+    return this.http.get(url);
+  }
 }
