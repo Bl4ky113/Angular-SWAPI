@@ -2,7 +2,6 @@
   *ngFor="
     let planet of planetList;
     let i=index;
-    let f=first;
     "
   [class.section-info--visible]="checkIfPlanetIsVisible(i)"
   #planet_(i)
@@ -40,6 +39,45 @@
     <li class="info">
       <span class="info__title">Terrain:</span>
       <span class="info__data">{{ planet.terrain }}</span>
+    </li>
+  </ul>
+</div>
+
+<div class="section-info"
+  [class.section-info--visible]="!checkIfPlanetsAvailable()">
+  <p class="section-info__name">Planet</p>
+  <ul class="info-list">
+    <li class="info">
+      <span class="info__title">Climate:</span>
+      <span class="info__data"></span>
+    </li>
+    <li class="info">
+      <span class="info__title">Diameter:</span>
+      <span class="info__data"></span>
+    </li>
+    <li class="info">
+      <span class="info__title">Gravity:</span>
+      <span class="info__data"></span>
+    </li>
+    <li class="info">
+      <span class="info__title">Orbital Period:</span>
+      <span class="info__data"></span>
+    </li>
+    <li class="info">
+      <span class="info__title">Population:</span>
+      <span class="info__data"></span>
+    </li>
+    <li class="info">
+      <span class="info__title">Rotation Period:</span>
+      <span class="info__data"></span>
+    </li>
+    <li class="info">
+      <span class="info__title">Surface Water:</span>
+      <span class="info__data"></span>
+    </li>
+    <li class="info">
+      <span class="info__title">Terrain:</span>
+      <span class="info__data"></span>
     </li>
   </ul>
 </div>

@@ -50,4 +50,8 @@ export class PlanetsComponent implements OnInit {
 
     return true;
   }
+
+  checkIfPlanetsAvailable () {
+    return this.planetList.length > 0;
+  }
 }
